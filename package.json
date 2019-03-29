@@ -1,0 +1,17 @@
+{
+  "name": "content-manager",
+  "version": "1.0.0",
+  "description": "Ataccama Content Manager",
+  "scripts": {
+    "tests": "vendor/bin/tester tests/"
+  },
+  "keywords": [
+    "ataccama"
+  ],
+  "author": "Miroslav Stolfa",
+  "license": "ISC",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}

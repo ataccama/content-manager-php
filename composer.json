@@ -1,0 +1,32 @@
+{
+  "name": "ataccama/content-manager",
+  "description": "Utils for content management",
+  "type": "library",
+  "license": [
+    "MIT",
+    "BSD-3-Clause",
+    "GPL-2.0",
+    "GPL-3.0"
+  ],
+  "require": {
+    "php": ">= 7.2.0",
+    "nette/utils": "^2.4"
+  },
+  "require-dev": {
+    "nette/tester": "^1.7"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ],
+    "files": [
+      "src/loader.php"
+    ]
+  },
+  "minimum-stability": "dev",
+  "config": {
+    "platform": {
+      "php": "7.2"
+    }
+  }
+}
