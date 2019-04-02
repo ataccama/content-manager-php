@@ -13,7 +13,7 @@
     use Ataccama\ContentManager\Utils\ContentFilter;
 
 
-    class ContentManager
+    class ContentLoader
     {
         /** @var IStorage */
         protected $storage;
@@ -27,6 +27,10 @@
             $this->storage = $storage;
         }
 
+        /**
+         * @param ContentFilter $contentFilter
+         * @return Content
+         */
         public function getContent(ContentFilter $contentFilter): Content
         {
             return $this->storage->getContent($contentFilter);
