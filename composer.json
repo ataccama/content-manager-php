@@ -8,6 +8,12 @@
     "GPL-2.0",
     "GPL-3.0"
   ],
+  "repositories": [
+    {
+      "type": "github",
+      "url": "https://github.com/martinjinda/ataccama-content-manager"
+    }
+  ],
   "require": {
     "php": ">= 7.2.0",
     "nette/utils": "^2.4"
