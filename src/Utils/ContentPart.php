@@ -15,19 +15,26 @@
     {
         use SmartObject;
 
+        /** @var string */
         public $text;
+
+        /** @var int */
+        public $id;
+
+        /** @var string */
+        public $alias;
 
         /**
          * ContentPart constructor.
-         * @param $text
+         * @param string $text
+         * @param int    $id
+         * @param string $alias
          */
-        public function __construct($text)
+        public function __construct(string $text, int $id, string $alias)
         {
             $this->text = $text;
+            $this->id = $id;
+            $this->alias = $alias;
         }
 
-        public function __toString()
-        {
-            return $this->text;
-        }
     }
