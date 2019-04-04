@@ -11,12 +11,16 @@
 
     use Ataccama\ContentManager\Utils\Content;
     use Ataccama\ContentManager\Utils\ContentFilter;
+    use Ataccama\Exceptions\ContentNotFound;
 
 
     class ContentLoader
     {
         /** @var IStorage */
         protected $storage;
+
+        /** @var Content[] */
+        private $content = [];
 
         /**
          * ContentManager constructor.
@@ -27,12 +31,26 @@
             $this->storage = $storage;
         }
 
-        /**
-         * @param ContentFilter $contentFilter
-         * @return Content
-         */
-        public function getContent(ContentFilter $contentFilter): Content
+        public function load(string $accessKey, ContentFilter $contentFilter)
         {
-            return $this->storage->getContent($contentFilter);
+            if (!key_exists($accessKey, $this->content)) {
+                $this->content[$accessKey] = $this->storage->getContent($contentFilter);
+            }
         }
+
+        /**
+         * @param $accessKey
+         * @return Content
+         * @throws ContentNotFound
+         */
+        public function __get($accessKey): Content
+        {
+            if (isset($this->content[$accessKey])) {
+                return $this->content[$accessKey];
+            }
+
+            throw new ContentNotFound("Content under key '$accessKey'' not exists.");
+        }
+
+
     }
