@@ -58,5 +58,24 @@
             return $this->language;
         }
 
+        /**
+         * @param array    $tagsByNamespaces
+         * @param Language $language
+         * @return array
+         * @throws NotInitialized
+         */
+        public static function getFilters(
+            array $tagsByNamespaces = ["namespace" => ["tag1", "tag2"]],
+            Language $language
+        ): array {
+            $filters = [];
 
+            foreach ($tagsByNamespaces as $namespace => $tags) {
+                foreach ($tags as $tag) {
+                    $filters[$namespace][] = new ContentFilter($tag, $language);
+                }
+            }
+
+            return $filters;
+        }
     }

@@ -31,6 +31,10 @@
             $this->storage = $storage;
         }
 
+        /**
+         * @param string        $accessKey
+         * @param ContentFilter $contentFilter
+         */
         public function load(string $accessKey, ContentFilter $contentFilter)
         {
             if (!key_exists($accessKey, $this->content)) {
@@ -51,6 +55,4 @@
 
             throw new ContentNotFound("Content under key '$accessKey'' not exists.");
         }
-
-
     }
