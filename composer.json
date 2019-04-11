@@ -10,8 +10,11 @@
   ],
   "repositories": [
     {
-      "type": "github",
-      "url": "https://github.com/martinjinda/ataccama-content-manager"
+      "type": "composer",
+      "url": "https://repo.packagist.com/ataccama/content-manager/"
+    },
+    {
+      "packagist.org": false
     }
   ],
   "require": {
@@ -22,12 +25,9 @@
     "nette/tester": "^1.7"
   },
   "autoload": {
-    "classmap": [
-      "src/"
-    ],
-    "files": [
-      "src/loader.php"
-    ]
+    "psr-4": {
+      "Ataccama\\ContentManager\\": "src"
+    }
   },
   "minimum-stability": "dev",
   "config": {

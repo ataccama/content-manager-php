@@ -9,7 +9,7 @@
     "ataccama"
   ],
   "author": "Miroslav Stolfa",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
   },
   "dependencies": {
