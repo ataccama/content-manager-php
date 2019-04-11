@@ -3,10 +3,7 @@
   "description": "Utils for content management",
   "type": "library",
   "license": [
-    "MIT",
-    "BSD-3-Clause",
-    "GPL-2.0",
-    "GPL-3.0"
+    "MIT"
   ],
   "repositories": [
     {
