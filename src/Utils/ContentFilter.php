@@ -13,6 +13,8 @@
 
 
     /**
+     * Class ContentFilter
+     * @package Ataccama\ContentManager\Utils
      * @property-read string   $tag
      * @property-read Language $language
      */
@@ -21,10 +23,10 @@
         use SmartObject;
 
         /** @var string */
-        private $tag;
+        protected $tag;
 
         /** @var Language */
-        private $language;
+        protected $language;
 
         /**
          * ContentFilter constructor.
@@ -45,7 +47,7 @@
         /**
          * @return string
          */
-        protected function getTag(): string
+        public function getTag(): string
         {
             return $this->tag;
         }
@@ -53,7 +55,7 @@
         /**
          * @return Language
          */
-        protected function getLanguage(): Language
+        public function getLanguage(): Language
         {
             return $this->language;
         }

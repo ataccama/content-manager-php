@@ -39,7 +39,7 @@
 
             if (key_exists($contentFilter->tag, $someStaticData)) {
                 foreach ($someStaticData[$contentFilter->tag] as $alias => $text) {
-                    $content->addPart(new ContentPart($text, 0, $alias));
+                    $content->addPart(new ContentPart(0, $text, $alias));
                 }
             }
 

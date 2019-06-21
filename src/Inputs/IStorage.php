@@ -13,6 +13,10 @@
     use Ataccama\ContentManager\Utils\ContentFilter;
 
 
+    /**
+     * Interface IStorage
+     * @package Ataccama\Inputs
+     */
     interface IStorage
     {
         /**

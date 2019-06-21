@@ -14,6 +14,10 @@
     use Nette\SmartObject;
 
 
+    /**
+     * Class Content
+     * @package Ataccama\ContentManager\Utils
+     */
     class Content
     {
         use SmartObject;
@@ -43,8 +47,12 @@
          * @return Content
          * @throws DuplicityException
          */
-        public function addPart(ContentPart $contentPart, bool $duplicity = true): Content
+        public function addPart(ContentPart $contentPart, bool $duplicity = null): Content
         {
+            if($duplicity === null) {
+                $duplicity = true;
+            }
+
             if (!key_exists($contentPart->alias, $this->contentParts)) {
                 $this->contentParts[$contentPart->alias] = $contentPart;
             } else {

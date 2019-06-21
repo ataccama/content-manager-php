@@ -12,18 +12,18 @@
     $content = new \Ataccama\ContentManager\Utils\Content("default");
 
     Assert::noError(function () use ($content) {
-        $content->addPart(new \Ataccama\ContentManager\Utils\ContentPart("test_1", 0, "test_one"));
+        $content->addPart(new \Ataccama\ContentManager\Utils\ContentPart(0, "test_1", "test_one"));
     });
 
     Assert::noError(function () use ($content) {
-        $content->addPart(new \Ataccama\ContentManager\Utils\ContentPart("test_2", 0, "test_two"));
+        $content->addPart(new \Ataccama\ContentManager\Utils\ContentPart(0, "test_2", "test_two"));
     });
 
     Assert::same("test_1", $content->test_one);
     Assert::same("test_2", $content->test_two);
 
     Assert::exception(function () use ($content) {
-        $content->addPart(new \Ataccama\ContentManager\Utils\ContentPart("test_1", 0, "test_one"));
+        $content->addPart(new \Ataccama\ContentManager\Utils\ContentPart(0, "test_1", "test_one"));
     }, \Ataccama\Exceptions\DuplicityException::class);
 
     Assert::exception(function () use ($content) {

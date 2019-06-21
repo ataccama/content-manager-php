@@ -12,14 +12,20 @@
     use Nette\SmartObject;
 
 
+    /**
+     * Class Language
+     * @package Ataccama\ContentManager\Utils
+     * @property-read int    $id
+     * @property-read string $short
+     */
     class Language
     {
         use SmartObject;
 
         /** @var int */
-        public $id;
+        protected $id;
         /** @var string */
-        public $short;
+        protected $short;
 
         public static $DEFAULT_ID = 1;
         public static $DEFAULT_SHORT = 'en';
@@ -53,5 +59,21 @@
         {
             self::$DEFAULT_ID = $id;
             self::$DEFAULT_SHORT = $short;
+        }
+
+        /**
+         * @return int
+         */
+        public function getId(): int
+        {
+            return $this->id;
+        }
+
+        /**
+         * @return string
+         */
+        public function getShort(): string
+        {
+            return $this->short;
         }
     }

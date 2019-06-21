@@ -43,11 +43,11 @@
         }
 
         /**
-         * @param $accessKey
+         * @param string $accessKey
          * @return Content
          * @throws ContentNotFound
          */
-        public function __get($accessKey): Content
+        public function __get(string $accessKey): Content
         {
             if (isset($this->content[$accessKey])) {
                 return $this->content[$accessKey];
