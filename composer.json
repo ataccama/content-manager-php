@@ -1,6 +1,7 @@
 {
   "name": "ataccama/content-manager",
   "description": "Utils for content management",
+  "version": "1.0.1",
   "type": "library",
   "license": [
     "MIT"
@@ -13,9 +14,12 @@
     "nette/tester": ">= 1.7"
   },
   "autoload": {
-    "psr-4": {
-      "Ataccama\\ContentManager\\": "src"
-    }
+    "classmap": [
+      "src/"
+    ],
+    "files": [
+      "src/bootstrap.php"
+    ]
   },
   "minimum-stability": "stable",
   "config": {
