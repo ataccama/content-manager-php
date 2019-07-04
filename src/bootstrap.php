@@ -11,3 +11,4 @@
 
     require __DIR__ . "/Inputs/ContentLoader.php";
     require __DIR__ . "/Inputs/IStorage.php";
+    require __DIR__ . "/Utils/IModifier.php";
