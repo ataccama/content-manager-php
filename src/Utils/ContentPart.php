@@ -21,7 +21,7 @@
         use SmartObject;
 
         /** @var string */
-        public $text;
+        public $content;
 
         /** @var int */
         protected $id;
@@ -29,17 +29,22 @@
         /** @var string */
         public $alias;
 
+        /** @var bool */
+        public $modifiable;
+
         /**
          * ContentPart constructor.
          * @param int    $id
-         * @param string $text
+         * @param string $content
          * @param string $alias
+         * @param bool   $modifiable
          */
-        public function __construct(int $id, string $text, string $alias)
+        public function __construct(int $id, string $content, string $alias, bool $modifiable = true)
         {
-            $this->text = $text;
+            $this->content = $content;
             $this->id = $id;
             $this->alias = $alias;
+            $this->modifiable = $modifiable;
         }
 
         /**

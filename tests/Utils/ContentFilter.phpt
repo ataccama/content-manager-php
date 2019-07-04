@@ -11,7 +11,7 @@
     Assert::noError(function () {
         $contentFilter = new \Ataccama\ContentManager\Utils\ContentFilter("test_tag",
             \Ataccama\ContentManager\Utils\Language::default());
-    }, \Ataccama\Exceptions\NotInitialized::class);
+    });
 
     $contentFilter = new \Ataccama\ContentManager\Utils\ContentFilter("test_tag",
         \Ataccama\ContentManager\Utils\Language::default());

@@ -18,7 +18,7 @@
      * Class Content
      * @package Ataccama\ContentManager\Utils
      */
-    class Content
+    class Content implements \Countable
     {
         use SmartObject;
 
@@ -28,6 +28,9 @@
         /** @var string */
         public $namespace;
 
+        /** @var IModifier[] */
+        private $modifiers = [];
+
         /**
          * Content constructor.
          * @param string $namespace
@@ -36,6 +39,34 @@
         {
             $this->namespace = $namespace;
             $this->contentParts = [];
+        }
+
+        /**
+         * Adds modifier.
+         *
+         * @param IModifier $modifier
+         * @return Content
+         */
+        public function addModifier(IModifier $modifier): Content
+        {
+            // adding the modifier
+            $this->modifiers[] = $modifier;
+
+            // sorting by priority
+            $sorted = false;
+            while (!$sorted) {
+                $sorted = true;
+                for ($i = 0; $i < count($this->modifiers) - 1; $i++) {
+                    if ($this->modifiers[$i]->getPriority() > $this->modifiers[$i + 1]->getPriority()) {
+                        $tmp = $this->modifiers[$i];
+                        $this->modifiers[$i] = $this->modifiers[$i + 1];
+                        $this->modifiers[$i + 1] = $tmp;
+                        $sorted = false;
+                    }
+                }
+            }
+
+            return $this;
         }
 
         /**
@@ -49,7 +80,7 @@
          */
         public function addPart(ContentPart $contentPart, bool $duplicity = null): Content
         {
-            if($duplicity === null) {
+            if ($duplicity === null) {
                 $duplicity = true;
             }
 
@@ -74,7 +105,7 @@
         public function __get($alias)
         {
             if (isset($this->contentParts[$alias])) {
-                return $this->contentParts[$alias]->text;
+                return $this->modify($this->contentParts[$alias])->content;
             }
 
             throw new ContentNotFound("Content '$alias' not found.");
@@ -86,5 +117,20 @@
         public function count(): int
         {
             return count($this->contentParts);
+        }
+
+        /**
+         * @param ContentPart $contentPart
+         * @return ContentPart
+         */
+        private function modify(ContentPart $contentPart): ContentPart
+        {
+            if ($contentPart->modifiable) {
+                foreach ($this->modifiers as $modifier) {
+                    $contentPart = $modifier->modify($contentPart);
+                }
+            }
+
+            return $contentPart;
         }
     }

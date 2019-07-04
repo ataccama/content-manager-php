@@ -8,6 +8,9 @@
     require __DIR__ . "/../../src/Utils/Content.php";
     require __DIR__ . "/../../src/Exceptions/DuplicityException.php";
     require __DIR__ . "/../../src/Exceptions/ContentNotFound.php";
+    require __DIR__ . "/../../src/Utils/IModifier.php";
+    require __DIR__ . "/../Implementation/Adder.php";
+    require __DIR__ . "/../Implementation/Cutter.php";
 
     $content = new \Ataccama\ContentManager\Utils\Content("default");
 
@@ -31,3 +34,16 @@
     }, \Ataccama\Exceptions\ContentNotFound::class);
 
     Assert::same(2, $content->count());
+
+    $content->addModifier(new \Ataccama\Test\Inputs\Cutter(2));
+    $content->addModifier(new \Ataccama\Test\Inputs\Adder("xxx"));
+
+    Assert::same("texxx",$content->test_one);
+
+    $content->addModifier(new \Ataccama\Test\Inputs\Adder("y"));
+
+    Assert::same("texxxy",$content->test_one);
+
+    $content->addModifier(new \Ataccama\Test\Inputs\Cutter(1));
+
+    Assert::same("txxxy",$content->test_one);

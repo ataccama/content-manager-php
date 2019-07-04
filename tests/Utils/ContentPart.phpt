@@ -8,6 +8,6 @@
 
     $contentPart = new \Ataccama\ContentManager\Utils\ContentPart(0, "test", "test_string");
 
-    Assert::same("test", $contentPart->text);
+    Assert::same("test", $contentPart->content);
     Assert::same(0, $contentPart->id);
     Assert::same("test_string", $contentPart->alias);
