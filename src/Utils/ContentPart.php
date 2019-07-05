@@ -14,7 +14,8 @@
     /**
      * Class ContentPart
      * @package Ataccama\ContentManager\Utils
-     * @property-read int $id
+     * @property-read int      $id
+     * @property-read Language $language
      */
     class ContentPart
     {
@@ -32,18 +33,28 @@
         /** @var bool */
         public $modifiable;
 
+        /** @var Language */
+        protected $language;
+
         /**
          * ContentPart constructor.
-         * @param int    $id
-         * @param string $content
-         * @param string $alias
-         * @param bool   $modifiable
+         * @param int      $id
+         * @param string   $content
+         * @param string   $alias
+         * @param Language $language
+         * @param bool     $modifiable
          */
-        public function __construct(int $id, string $content, string $alias, bool $modifiable = true)
-        {
+        public function __construct(
+            int $id,
+            string $content,
+            string $alias,
+            Language $language,
+            bool $modifiable = true
+        ) {
             $this->content = $content;
             $this->id = $id;
             $this->alias = $alias;
+            $this->language = $language;
             $this->modifiable = $modifiable;
         }
 
@@ -53,5 +64,13 @@
         public function getId(): int
         {
             return $this->id;
+        }
+
+        /**
+         * @return Language
+         */
+        public function getLanguage(): Language
+        {
+            return $this->language;
         }
     }

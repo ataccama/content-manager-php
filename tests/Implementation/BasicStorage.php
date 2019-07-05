@@ -12,6 +12,7 @@
     use Ataccama\ContentManager\Utils\Content;
     use Ataccama\ContentManager\Utils\ContentPart;
     use Ataccama\ContentManager\Utils\ContentFilter;
+    use Ataccama\ContentManager\Utils\Language;
     use Ataccama\Inputs\IStorage;
 
 
@@ -25,7 +26,7 @@
         public function getContent(ContentFilter $contentFilter): Content
         {
             $someStaticData = [
-                "test" => [
+                "test"    => [
                     "test_content_1" => "Test text",
                     "test_content_2" => "Test text2",
                 ],
@@ -39,7 +40,7 @@
 
             if (key_exists($contentFilter->tag, $someStaticData)) {
                 foreach ($someStaticData[$contentFilter->tag] as $alias => $text) {
-                    $content->addPart(new ContentPart(0, $text, $alias));
+                    $content->addPart(new ContentPart(0, $text, $alias, $contentFilter->language));
                 }
             }
 
