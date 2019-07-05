@@ -21,6 +21,9 @@
     {
         use SmartObject;
 
+        /** @var int */
+        const ID_NOT_DEFINED = 0;
+
         /** @var string */
         public $content;
 
