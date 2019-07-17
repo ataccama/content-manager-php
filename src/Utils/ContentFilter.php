@@ -18,6 +18,7 @@
      * @property-read string   $tag
      * @property-read string   $term
      * @property-read string   $slug
+     * @property-read string   $namespace
      * @property-read Language $language
      * @property-read int      $id
      */
@@ -34,6 +35,9 @@
         /** @var int */
         protected $id;
 
+        /** @var string */
+        protected $namespace;
+
         const ID = 1;
         const TAG = 2;
         const TERM = 3;
@@ -41,12 +45,14 @@
 
         /**
          * ContentFilter constructor.
+         * @param string   $namespace
          * @param Language $language
          * @param array    $params
          */
-        public function __construct(Language $language, array $params)
+        public function __construct(string $namespace, Language $language, array $params)
         {
             $this->language = $language;
+            $this->namespace = $namespace;
 
             if (isset($params[self::ID])) {
                 $this->pageId = $params[self::ID];
@@ -102,27 +108,11 @@
             return $this->id;
         }
 
-//        /**
-//         * Example:
-//         * $tagsByNamespaces = ["namespace"=>["tag_1","tag_2]]
-//         *
-//         * @param array    $tagsByNamespaces
-//         * @param Language $language
-//         * @return array
-//         * @throws NotInitialized
-//         */
-//        public static function getFilters(
-//            array $tagsByNamespaces,
-//            Language $language
-//        ): array {
-//            $filters = [];
-//
-//            foreach ($tagsByNamespaces as $namespace => $tags) {
-//                foreach ($tags as $tag) {
-//                    $filters[$namespace][] = new ContentFilter($tag, $language);
-//                }
-//            }
-//
-//            return $filters;
-//        }
+        /**
+         * @return string
+         */
+        public function getNamespace(): string
+        {
+            return $this->namespace;
+        }
     }

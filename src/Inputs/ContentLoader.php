@@ -32,27 +32,26 @@
         }
 
         /**
-         * @param string        $accessKey
          * @param ContentFilter $contentFilter
          */
-        public function load(string $accessKey, ContentFilter $contentFilter)
+        public function load(ContentFilter $contentFilter)
         {
-            if (!key_exists($accessKey, $this->content)) {
-                $this->content[$accessKey] = $this->storage->getContent($contentFilter);
+            if (!key_exists($contentFilter->namespace, $this->content)) {
+                $this->content[$contentFilter->namespace] = $this->storage->getContent($contentFilter);
             }
         }
 
         /**
-         * @param string $accessKey
+         * @param string $namespace
          * @return Content
          * @throws ContentNotFound
          */
-        public function __get(string $accessKey): Content
+        public function __get(string $namespace): Content
         {
-            if (isset($this->content[$accessKey])) {
-                return $this->content[$accessKey];
+            if (isset($this->content[$namespace])) {
+                return $this->content[$namespace];
             }
 
-            throw new ContentNotFound("Content under key '$accessKey'' not exists.");
+            throw new ContentNotFound("Content under key '$namespace'' not exists.");
         }
     }

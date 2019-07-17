@@ -15,7 +15,7 @@
 
     $storage = new \Ataccama\Test\Inputs\BasicStorage();
 
-    $contentFilter = new \Ataccama\ContentManager\Utils\ContentFilter(\Ataccama\ContentManager\Utils\Language::default(),
+    $contentFilter = new \Ataccama\ContentManager\Utils\ContentFilter("test_namespace",\Ataccama\ContentManager\Utils\Language::default(),
         [
             \Ataccama\ContentManager\Utils\ContentFilter::TAG => "test"
         ]);
