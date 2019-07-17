@@ -15,24 +15,24 @@
     /**
      * Class ContentFilter
      * @package Ataccama\ContentManager\Utils
-     * @property-read string|null $tag
-     * @property-read string|null $term
-     * @property-read string|null $slug
-     * @property-read string      $namespace
-     * @property-read Language    $language
-     * @property-read int|null    $id
+     * @property-read string   $tag
+     * @property-read string   $term
+     * @property-read string   $slug
+     * @property-read string   $namespace
+     * @property-read Language $language
+     * @property-read int      $id
      */
     class ContentFilter
     {
         use SmartObject;
 
-        /** @var string */
+        /** @var string|null */
         protected $tag, $term, $slug;
 
         /** @var Language */
         protected $language;
 
-        /** @var int */
+        /** @var int|null */
         protected $id;
 
         /** @var string */
