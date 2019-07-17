@@ -55,7 +55,7 @@
             $this->namespace = $namespace;
 
             if (isset($params[self::ID])) {
-                $this->pageId = $params[self::ID];
+                $this->id = $params[self::ID];
             }
             if (isset($params[self::TAG])) {
                 $this->tag = $params[self::TAG];
