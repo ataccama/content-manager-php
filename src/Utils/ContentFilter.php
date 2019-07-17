@@ -49,7 +49,7 @@
          * @param Language $language
          * @param array    $params
          */
-        public function __construct(string $namespace, Language $language, array $params)
+        public function __construct(string $namespace, Language $language, array $params = [])
         {
             $this->language = $language;
             $this->namespace = $namespace;
