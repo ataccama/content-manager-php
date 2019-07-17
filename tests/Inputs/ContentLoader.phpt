@@ -19,12 +19,14 @@
 
     $contentLoader = new \Ataccama\Inputs\ContentLoader($storage);
 
-    Assert::exception(function () use ($contentLoader) {
-        new \Ataccama\ContentManager\Utils\ContentFilter("", \Ataccama\ContentManager\Utils\Language::default());
-    }, \Ataccama\Exceptions\NotInitialized::class);
+//    Assert::exception(function () use ($contentLoader) {
+//        new \Ataccama\ContentManager\Utils\ContentFilter(\Ataccama\ContentManager\Utils\Language::default());
+//    }, \Ataccama\Exceptions\NotInitialized::class);
 
-    $contentFilter = new \Ataccama\ContentManager\Utils\ContentFilter("test",
-        \Ataccama\ContentManager\Utils\Language::default());
+    $contentFilter = new \Ataccama\ContentManager\Utils\ContentFilter(\Ataccama\ContentManager\Utils\Language::default(),
+        [
+            \Ataccama\ContentManager\Utils\ContentFilter::TAG => "test"
+        ]);
 
     $contentLoader->load("test_namespace", $contentFilter);
 

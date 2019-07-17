@@ -15,13 +15,15 @@
 
     $storage = new \Ataccama\Test\Inputs\BasicStorage();
 
-    $contentFilter = new \Ataccama\ContentManager\Utils\ContentFilter("test",
-        \Ataccama\ContentManager\Utils\Language::default());
+    $contentFilter = new \Ataccama\ContentManager\Utils\ContentFilter(\Ataccama\ContentManager\Utils\Language::default(),
+        [
+            \Ataccama\ContentManager\Utils\ContentFilter::TAG => "test"
+        ]);
 
     $content = $storage->getContent($contentFilter);
 
     Assert::same("Test text", $content->test_content_1);
 
-    Assert::exception(function() use ($content){
+    Assert::exception(function () use ($content) {
         $content->test_content_3;
-    },\Ataccama\Exceptions\ContentNotFound::class);
+    }, \Ataccama\Exceptions\ContentNotFound::class);
