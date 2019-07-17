@@ -15,12 +15,12 @@
     /**
      * Class ContentFilter
      * @package Ataccama\ContentManager\Utils
-     * @property-read string   $tag
-     * @property-read string   $term
-     * @property-read string   $slug
-     * @property-read string   $namespace
-     * @property-read Language $language
-     * @property-read int      $id
+     * @property-read string|null $tag
+     * @property-read string|null $term
+     * @property-read string|null $slug
+     * @property-read string      $namespace
+     * @property-read Language    $language
+     * @property-read int|null    $id
      */
     class ContentFilter
     {
@@ -69,9 +69,9 @@
         }
 
         /**
-         * @return string
+         * @return string|null
          */
-        public function getTag(): string
+        public function getTag(): ?string
         {
             return $this->tag;
         }
@@ -85,25 +85,25 @@
         }
 
         /**
-         * @return string
+         * @return string|null
          */
-        public function getTerm(): string
+        public function getTerm(): ?string
         {
             return $this->term;
         }
 
         /**
-         * @return string
+         * @return string|null
          */
-        public function getSlug(): string
+        public function getSlug(): ?string
         {
             return $this->slug;
         }
 
         /**
-         * @return int
+         * @return int|null
          */
-        public function getId(): int
+        public function getId(): ?int
         {
             return $this->id;
         }
