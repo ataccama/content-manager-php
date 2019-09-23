@@ -1,14 +1,16 @@
 {
-  "name": "ataccama/content-manager",
-  "description": "Utils for content management",
-  "version": "1.0.10",
+  "name": "ataccama/content-manager-php",
+  "description": "Classes for content management",
+  "version": "2.0.0",
   "type": "library",
   "license": [
     "MIT"
   ],
   "require": {
     "php": ">= 7.2.0",
-    "nette/utils": ">= 2.4"
+    "nette/utils": ">= 2.4",
+    "ataccama/utils-php": "^2.0",
+    "latte/latte": "^2.5"
   },
   "require-dev": {
     "nette/tester": ">= 1.7"
