@@ -10,7 +10,9 @@
     /**
      * Class ContentVersion
      * @package Ataccama\ContentManager\Env
-     * @property-read int $id
+     * @property-read int      $id
+     * @property-read DateTime $dtCreated
+     * @property-read string   $content
      */
     class ContentVersion implements IEntry
     {
@@ -33,5 +35,21 @@
             $this->id = $id;
             $this->content = $content;
             $this->dtCreated = $dtCreated;
+        }
+
+        /**
+         * @return DateTime
+         */
+        public function getDtCreated(): DateTime
+        {
+            return $this->dtCreated;
+        }
+
+        /**
+         * @return string
+         */
+        public function getContent(): string
+        {
+            return $this->content;
         }
     }
