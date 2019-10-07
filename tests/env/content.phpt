@@ -5,7 +5,9 @@
 
 
     $content = new \Ataccama\ContentManager\Env\Content(1, "default",
-        new \Ataccama\ContentManager\Env\Language(1, "eng"), "Test content");
+        new \Ataccama\ContentManager\Env\Language(1, "eng"), "Test content", [], null, [
+            new \Ataccama\ContentManager\Env\ContentVersion(123, "original", \Nette\Utils\DateTime::from("2000-01-01"))
+        ]);
 
     Assert::same("Test content", $content->body);
     Assert::same(1, $content->id);
@@ -37,3 +39,7 @@
     Assert::same("Old nothing", "$contentContainer->foo");
 
     Assert::count(2, $contentContainer);
+
+    Assert::same("2000", $content->versions[0]->dtCreated->format("Y"));
+    Assert::same("original", $content->versions[0]->content);
+    Assert::same("123", $content->versions[0]->id);
