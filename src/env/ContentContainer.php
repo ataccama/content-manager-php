@@ -32,19 +32,30 @@
         /**
          * Returns a part of the content with specific
          *
-         * @param string $alias
+         * @param string $name
          * @return Content
          * @throws ContentNotFound
          */
-        public function __get(string $alias)
+        public function __get(string $name)
         {
-            foreach ($this as $content) {
-                if ($content->name === $alias) {
-                    return $this->modify($content);
-                }
+            if (isset($this->items[$name])) {
+                return $this->modify($this->items[$name]);
             }
 
-            throw new ContentNotFound("Content '$alias' not found.");
+            throw new ContentNotFound("Content '$name' not found.");
+        }
+
+        /**
+         * @param string $name
+         * @return Content
+         * @throws ContentNotFound
+         */
+        public function get($name): Content
+        {
+            if (isset($this->items[$name])) {
+                return $this->items[$name];
+            }
+            throw new ContentNotFound("Content '$name' not found.");
         }
 
         /**
@@ -52,6 +63,6 @@
          */
         public function add($content)
         {
-            parent::add($content);
+            $this->items[$content->name] = $content;
         }
     }

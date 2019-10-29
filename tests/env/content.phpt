@@ -27,10 +27,10 @@
 
     Assert::same("Three", $contentContainer->default->tags[0]->name);
 
-    $content = new \Ataccama\ContentManager\Env\Content(2, "foo", new \Ataccama\ContentManager\Env\Language(2, "cs"),
+    $content2 = new \Ataccama\ContentManager\Env\Content(2, "foo", new \Ataccama\ContentManager\Env\Language(2, "cs"),
         "Old content");
 
-    $contentContainer->add($content);
+    $contentContainer->add($content2);
 
     $contentContainer->addModifier(new \Ataccama\ContentManager\Modifiers\Changer(['Test', 'content'],
         ['New', 'nothing']));
@@ -42,4 +42,4 @@
 
     Assert::same("2000", $content->versions[0]->dtCreated->format("Y"));
     Assert::same("original", $content->versions[0]->content);
-    Assert::same("123", $content->versions[0]->id);
+    Assert::same(123, $content->versions[0]->id);

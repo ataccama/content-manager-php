@@ -14,7 +14,7 @@
     {
         public function getContent(IEntry $content, Language $language): Content;
 
-        public function listContent(Paginator &$paginator = null, ContentFilter $filter = null): ContentContainer;
+        public function listContent(ContentFilter $filter = null, Paginator &$paginator = null): ContentContainer;
 
         public function updateContent(Content $content): Content;
 
