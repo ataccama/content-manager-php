@@ -43,3 +43,5 @@
     Assert::same("2000", $content->versions[0]->dtCreated->format("Y"));
     Assert::same("original", $content->versions[0]->content);
     Assert::same(123, $content->versions[0]->id);
+
+    Assert::same('default', $contentContainer->get('default')->name);
