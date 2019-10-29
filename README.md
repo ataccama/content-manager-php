@@ -7,7 +7,7 @@ Modifiers give you option to temporarily change the content before final renderi
 final class YourModifier implements IModifier {
     public function modify(Content $content): Content {
         // replace each word 'sample' for 'test'
-        $content->body = str_replace('sample','test',$content->body);
+        $content->body = str_replace('sample', 'test', $content->body);
 
         return $content
     }
@@ -24,7 +24,7 @@ Your repository (implements interface ``IContentRepository``) has to return ``Co
 ```
 // instance of IContentRepository
 $contentContainer = $contentRepository->listContent( new ContentFilter([
-        ContentFilter::TAGS => ['tag1','tag2]
+        ContentFilter::TAGS => ['tag1', 'tag2]
     ]) );
 
 // optional: adding an IModifier
