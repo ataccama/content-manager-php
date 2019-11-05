@@ -17,6 +17,10 @@
     Assert::same(\Ataccama\ContentManager\Env\Language::default()->isoCode, $defaultLanguage->isoCode);
 
     $currentLanguage = new \Ataccama\ContentManager\Env\Language(10, "de");
+
+    Assert::same(\Ataccama\ContentManager\Env\Language::current()->id, $defaultLanguage->id);
+    Assert::same(\Ataccama\ContentManager\Env\Language::current()->isoCode, $defaultLanguage->isoCode);
+
     \Ataccama\ContentManager\Env\Language::set($currentLanguage);
 
     Assert::same(\Ataccama\ContentManager\Env\Language::current()->id, $currentLanguage->id);

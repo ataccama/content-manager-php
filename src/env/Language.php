@@ -78,6 +78,10 @@
          */
         public static function current(): Language
         {
+            if (!isset(self::$current)) {
+                self::$current = self::default();
+            }
+
             return self::$current;
         }
 
