@@ -1,7 +1,7 @@
 <?php
-    require __DIR__ . "/Exceptions/ContentNotFound.php";
-    require __DIR__ . "/Exceptions/Duplicity.php";
-    require __DIR__ . "/Exceptions/NotInitialized.php";
+    require __DIR__ . "/exceptions/ContentNotFound.php";
+    require __DIR__ . "/exceptions/Duplicity.php";
+    require __DIR__ . "/exceptions/NotInitialized.php";
 
     require __DIR__ . "/env/IContentRepository.php";
     require __DIR__ . "/env/IModifier.php";
