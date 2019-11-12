@@ -65,4 +65,13 @@
         {
             $this->items[$content->name] = $content;
         }
+
+        /**
+         * @param $name
+         * @return bool
+         */
+        public function __isset($name)
+        {
+            return isset($this->items[$name]);
+        }
     }

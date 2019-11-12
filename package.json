@@ -1,6 +1,6 @@
 {
   "name": "content-manager",
-  "version": "1.0.0",
+  "version": "3.0.2",
   "description": "Ataccama Content Manager",
   "scripts": {
     "tests": "vendor/bin/tester tests/"
@@ -8,7 +8,7 @@
   "keywords": [
     "ataccama"
   ],
-  "author": "Miroslav Stolfa",
+  "author": "Miroslav Stolfa @ Ataccama Software s.r.o.",
   "license": "MIT",
   "devDependencies": {
   },

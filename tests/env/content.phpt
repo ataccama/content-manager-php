@@ -45,3 +45,5 @@
     Assert::same(123, $content->versions[0]->id);
 
     Assert::same('default', $contentContainer->get('default')->name);
+
+    Assert::same(true, isset($contentContainer->default));
