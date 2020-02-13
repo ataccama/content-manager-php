@@ -93,8 +93,23 @@
             self::$current = $current;
         }
 
+        /**
+         * @deprecated
+         * @return Pair
+         *
+         */
         public function toPair(): Pair
         {
             return new Pair($this->id, $this->isoCode);
+        }
+
+        public function getKey()
+        {
+            return $this->id;
+        }
+
+        public function getValue()
+        {
+            return $this->isoCode;
         }
     }

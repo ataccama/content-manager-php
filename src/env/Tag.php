@@ -28,8 +28,22 @@
             $this->id = $id;
         }
 
+        public function getKey()
+        {
+            return $this->id;
+        }
+
+        public function getValue()
+        {
+            return $this->name;
+        }
+
+        /**
+         * @return Pair
+         * @deprecated
+         */
         public function toPair(): Pair
         {
-            return new Pair($this->id, $this->name);
+            return new $this;
         }
     }
