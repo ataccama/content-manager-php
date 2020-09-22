@@ -3,6 +3,7 @@
     namespace Ataccama\ContentManager\Env;
 
     use Ataccama\Common\Env\IEntry;
+    use Nette\Utils\Validators;
 
 
     /**
@@ -16,6 +17,7 @@
         const TAGS = "tags";
         const SEARCH_TERM = "term";
         const PAGE = "page";
+        const CONTENT_ID = "content_id";
 
         /** @var string[] */
         public $aliases = [];
@@ -23,14 +25,17 @@
         /** @var string[] */
         public $tags = [];
 
-        /** @var Language */
+        /** @var Language|null */
         public $language;
 
-        /** @var string */
+        /** @var string|null */
         public $term;
 
-        /** @var IEntry */
+        /** @var IEntry|null */
         public $page;
+
+        /** @var int|null */
+        public $contentId;
 
         /**
          * ContentFilter constructor.
@@ -60,6 +65,9 @@
             }
             if (isset($params[self::SEARCH_TERM])) {
                 $this->term = $params[self::SEARCH_TERM];
+            }
+            if (isset($params[self::CONTENT_ID]) && Validators::isNumericInt($params[self::CONTENT_ID])) {
+                $this->contentId = (int) $params[self::CONTENT_ID];
             }
         }
     }
