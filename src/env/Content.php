@@ -19,6 +19,7 @@
         use BaseEntry;
         use ModifiableContent;
 
+
         /** @var DateTime */
         protected $dtCreated;
 
@@ -90,5 +91,10 @@
             $this->modifiedBody = $modifiedBody;
 
             return $modifiedBody;
+        }
+
+        public function cleanVersions(): void
+        {
+            $this->versions = [];
         }
     }
