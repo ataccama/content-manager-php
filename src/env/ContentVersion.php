@@ -10,13 +10,15 @@
     /**
      * Class ContentVersion
      * @package Ataccama\ContentManager\Env
-     * @property-read int      $id
-     * @property-read DateTime $dtCreated
-     * @property-read string   $content
+     * @property-read int         $id
+     * @property-read DateTime    $dtCreated
+     * @property-read string      $content
+     * @property-read string|null $author
      */
     class ContentVersion implements IEntry
     {
         use BaseEntry;
+
 
         /** @var string */
         protected $content;
@@ -24,17 +26,22 @@
         /** @var DateTime */
         protected $dtCreated;
 
+        /** @var string|null */
+        protected $author;
+
         /**
          * ContentVersion constructor.
-         * @param int      $id
-         * @param string   $content
-         * @param DateTime $dtCreated
+         * @param int         $id
+         * @param string      $content
+         * @param DateTime    $dtCreated
+         * @param string|null $author
          */
-        public function __construct(int $id, string $content, DateTime $dtCreated)
+        public function __construct(int $id, string $content, DateTime $dtCreated, ?string $author = null)
         {
             $this->id = $id;
             $this->content = $content;
             $this->dtCreated = $dtCreated;
+            $this->author = $author;
         }
 
         /**
@@ -51,5 +58,13 @@
         public function getContent(): string
         {
             return $this->content;
+        }
+
+        /**
+         * @return string|null
+         */
+        public function getAuthor(): ?string
+        {
+            return $this->author;
         }
     }
