@@ -11,12 +11,16 @@
     /**
      * Class Language
      * @package Ataccama\ContentManager\Env
-     * @property-read int    $id
-     * @property-read string $isoCode
+     * @property-read int         $id
+     * @property-read string      $isoCode
+     * @property-read string|null $name
+     * @property-read string|null $nativeName
+     * @property-read bool        $active
      */
     class Language implements IEntry, IPair
     {
         use BaseEntry;
+
 
         /** @var int */
         private static $defaultLanguageId = 1;
@@ -33,15 +37,35 @@
          */
         protected $isoCode;
 
+        /** @var string|null */
+        protected $name = null;
+
+        /** @var string|null */
+        protected $nativeName = null;
+
+        /** @var bool */
+        protected $active = true;
+
         /**
          * Language constructor.
-         * @param int    $id
-         * @param string $isoCode
+         * @param int         $id
+         * @param string      $isoCode
+         * @param bool        $active
+         * @param string|null $name
+         * @param string|null $nativeName
          */
-        public function __construct(int $id, string $isoCode)
-        {
+        public function __construct(
+            int $id,
+            string $isoCode,
+            bool $active = true,
+            ?string $name = null,
+            ?string $nativeName = null
+        ) {
             $this->id = $id;
             $this->isoCode = $isoCode;
+            $this->active = $active;
+            $this->name = $name;
+            $this->nativeName = $nativeName;
         }
 
         /**
@@ -94,9 +118,9 @@
         }
 
         /**
-         * @deprecated
          * @return Pair
          *
+         * @deprecated
          */
         public function toPair(): Pair
         {
@@ -111,5 +135,29 @@
         public function getValue()
         {
             return $this->isoCode;
+        }
+
+        /**
+         * @return string|null
+         */
+        public function getName(): ?string
+        {
+            return $this->name;
+        }
+
+        /**
+         * @return string|null
+         */
+        public function getNativeName(): ?string
+        {
+            return $this->nativeName;
+        }
+
+        /**
+         * @return bool
+         */
+        public function isActive(): bool
+        {
+            return $this->active;
         }
     }
