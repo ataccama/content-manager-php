@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -20,19 +21,14 @@
         use BaseEntry;
 
 
-        /** @var string */
-        protected $content;
-
-        /** @var DateTime */
-        protected $dtCreated;
-
-        /** @var string|null */
-        protected $author;
+        protected string $content;
+        protected DateTime $dtCreated;
+        protected ?string $author;
 
         /**
          * ContentVersion constructor.
          * @param int         $id
-         * @param string      $content
+         * @param string|null      $content
          * @param DateTime    $dtCreated
          * @param string|null $author
          */

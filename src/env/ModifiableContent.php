@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -13,12 +14,9 @@
     trait ModifiableContent
     {
         /** @var IModifier[] */
-        private $modifiers = [];
+        private array $modifiers = [];
 
-        /**
-         * @var array
-         */
-        private $modifications = [];
+        private array $modifications = [];
 
         public function addModifier(IModifier $modifier): void
         {
@@ -26,7 +24,7 @@
             $this->modifiers[] = $modifier;
 
             // sorting by priority
-            Sorter::sort($this->modifiers, new Comparator(), Sorter::DESC);
+            Sorter::sort($this->modifiers, new Comparator(), (int) Sorter::DESC);
         }
 
         /**

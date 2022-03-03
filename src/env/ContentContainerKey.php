@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -11,7 +12,6 @@
      */
     class ContentContainerKey extends EntryKey
     {
-
         public function getPrefix(): ?string
         {
             return "contentContainer";

@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -11,17 +12,12 @@
      */
     class ContentDefinition
     {
-        /** @var string */
-        public $name;
-
-        /** @var string */
-        public $body;
-
-        /** @var Language */
-        public $language;
+        public string $name;
+        public ?string $body;
+        public Language $language;
 
         /** @var string[] */
-        public $tags;
+        public array $tags;
 
         /**
          * ContentDefinition constructor.
@@ -30,7 +26,7 @@
          * @param string|null $body
          * @param Tag[]       $tags
          */
-        public function __construct(string $name, Language $language, string $body = null, array $tags = [])
+        public function __construct(string $name, Language $language, ?string $body = null, array $tags = [])
         {
             $this->name = str_replace("-", "_", Strings::webalize($name));
             $this->body = $body;

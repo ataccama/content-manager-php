@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -8,8 +9,7 @@
      */
     class TagDefinition
     {
-        /** @var string */
-        public $name;
+        public string $name;
 
         /**
          * TagDefinition constructor.

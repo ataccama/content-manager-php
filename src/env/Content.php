@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -20,14 +21,12 @@
         use ModifiableContent;
 
 
-        /** @var DateTime */
-        protected $dtCreated;
+        protected DateTime $dtCreated;
 
         /** @var ContentVersion[] */
-        protected $versions = [];
+        protected array $versions = [];
 
-        /** @var string */
-        private $modifiedBody;
+        private ?string $modifiedBody = null;
 
         /**
          * Content constructor.
@@ -50,10 +49,11 @@
         ) {
             parent::__construct($name, $languageId, $body, $tags);
             $this->id = $id;
-            $this->dtCreated = $dtCreated;
 
-            if (!isset($this->dtCreated)) {
+            if ($dtCreated == null) {
                 $this->dtCreated = DateTime::from('now');
+            } else {
+                $this->dtCreated = $dtCreated;
             }
 
             if (isset($versions) && is_array($versions)) {

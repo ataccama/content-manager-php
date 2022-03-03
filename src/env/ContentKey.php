@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -12,8 +13,7 @@
      */
     class ContentKey extends EntryKey
     {
-        /** @var int */
-        private $languageId;
+        private int $languageId;
 
         /**
          * ContentKey constructor.

@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Modifiers;
 
@@ -12,9 +13,9 @@
      */
     class Changer implements IModifier
     {
-        private $in = [];
+        private array $in = [];
 
-        private $out = [];
+        private array $out = [];
 
         /**
          * Changer constructor.

@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -20,22 +21,15 @@
         const CONTENT_ID = "content_id";
 
         /** @var string[] */
-        public $aliases = [];
+        public array $aliases = [];
 
         /** @var string[] */
-        public $tags = [];
+        public array $tags = [];
 
-        /** @var Language|null */
-        public $language;
-
-        /** @var string|null */
-        public $term;
-
-        /** @var IEntry|null */
-        public $page;
-
-        /** @var int|null */
-        public $contentId;
+        public ?Language $language;
+        public ?string $term;
+        public ?IEntry $page;
+        public ?int $contentId;
 
         /**
          * ContentFilter constructor.

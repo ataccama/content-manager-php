@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -22,29 +23,18 @@
         use BaseEntry;
 
 
-        /** @var int */
-        private static $defaultLanguageId = 1;
-
-        /** @var string */
-        private static $defaultIsoCode = "en";
-
-        /** @var Language */
-        private static $current;
+        private static int $defaultLanguageId = 1;
+        private static string $defaultIsoCode = "en";
+        private static Language $current;
 
         /**
          * @var string
          * ISO 639-1 Code
          */
-        protected $isoCode;
-
-        /** @var string|null */
-        protected $name = null;
-
-        /** @var string|null */
-        protected $nativeName = null;
-
-        /** @var bool */
-        protected $active = true;
+        protected string $isoCode;
+        protected ?string $name = null;
+        protected ?string $nativeName = null;
+        protected bool $active = true;
 
         /**
          * Language constructor.
