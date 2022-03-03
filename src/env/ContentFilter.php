@@ -3,7 +3,6 @@
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\IEntry;
     use Nette\Utils\Validators;
 
 
@@ -17,7 +16,7 @@
         const ALIASES = "aliases";
         const TAGS = "tags";
         const SEARCH_TERM = "term";
-        const PAGE = "page";
+        const PAGE_ID = "page_id";
         const CONTENT_ID = "content_id";
 
         /** @var string[] */
@@ -28,7 +27,7 @@
 
         public ?Language $language;
         public ?string $term;
-        public ?IEntry $page;
+        public ?int $pageId;
         public ?int $contentId;
 
         /**
@@ -42,9 +41,9 @@
                     $this->language = $params[self::LANGUAGE];
                 }
             }
-            if (isset($params[self::PAGE])) {
-                if ($params[self::PAGE] instanceof IEntry) {
-                    $this->page = $params[self::PAGE];
+            if (isset($params[self::PAGE_ID])) {
+                if (Validators::isNumericInt($params[self::PAGE_ID])) {
+                    $this->pageId = $params[self::PAGE_ID];
                 }
             }
             if (isset($params[self::ALIASES])) {
@@ -57,7 +56,7 @@
                     $this->tags = $params[self::TAGS];
                 }
             }
-            if (isset($params[self::SEARCH_TERM])) {
+            if (!empty($params[self::SEARCH_TERM])) {
                 $this->term = $params[self::SEARCH_TERM];
             }
             if (isset($params[self::CONTENT_ID]) && Validators::isNumericInt($params[self::CONTENT_ID])) {

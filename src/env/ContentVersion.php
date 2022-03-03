@@ -3,8 +3,8 @@
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\BaseEntry;
-    use Ataccama\Common\Env\IEntry;
+    use Ataccama\Common\Env\IdentifiedByInteger;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
     use Nette\Utils\DateTime;
 
 
@@ -16,9 +16,9 @@
      * @property-read string      $content
      * @property-read string|null $author
      */
-    class ContentVersion implements IEntry
+    class ContentVersion implements IdentifiableByInteger
     {
-        use BaseEntry;
+        use IdentifiedByInteger;
 
 
         protected string $content;
@@ -28,7 +28,7 @@
         /**
          * ContentVersion constructor.
          * @param int         $id
-         * @param string|null      $content
+         * @param string      $content
          * @param DateTime    $dtCreated
          * @param string|null $author
          */

@@ -16,9 +16,9 @@
         use ModifiableContent;
 
         /**
-         * @return Content
+         * @return Content|null
          */
-        public function current(): Content
+        public function current(): ?Content
         {
             $content = parent::current();
             if ($content instanceof Content) {
@@ -51,7 +51,7 @@
          * @return Content
          * @throws ContentNotFound
          */
-        public function get($name): Content
+        public function get(mixed $name): Content
         {
             if (isset($this->items[$name])) {
                 return $this->items[$name];
@@ -63,7 +63,7 @@
          * @param $content
          * @return ContentContainer
          */
-        public function add($content): self
+        public function add(mixed $content): self
         {
             $this->items[$content->name] = $content;
 

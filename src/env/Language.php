@@ -3,10 +3,9 @@
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\BaseEntry;
-    use Ataccama\Common\Env\IEntry;
+    use Ataccama\Common\Env\IdentifiedByInteger;
     use Ataccama\Common\Env\IPair;
-    use Ataccama\Common\Env\Pair;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
 
 
     /**
@@ -18,9 +17,9 @@
      * @property-read string|null $nativeName
      * @property-read bool        $active
      */
-    class Language implements IEntry, IPair
+    class Language implements IdentifiableByInteger, IPair
     {
-        use BaseEntry;
+        use IdentifiedByInteger;
 
 
         private static int $defaultLanguageId = 1;
@@ -107,22 +106,12 @@
             self::$current = $current;
         }
 
-        /**
-         * @return Pair
-         *
-         * @deprecated
-         */
-        public function toPair(): Pair
-        {
-            return new Pair($this->id, $this->isoCode);
-        }
-
-        public function getKey()
+        public function getKey(): int|string
         {
             return $this->id;
         }
 
-        public function getValue()
+        public function getValue(): string
         {
             return $this->isoCode;
         }

@@ -3,8 +3,8 @@
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\BaseEntry;
-    use Ataccama\Common\Env\IEntry;
+    use Ataccama\Common\Env\IdentifiedByInteger;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
     use Latte\Runtime\IHtmlString;
     use Nette\Utils\DateTime;
 
@@ -15,9 +15,9 @@
      * @property-read DateTime         $dtCreated
      * @property-read ContentVersion[] $versions
      */
-    class Content extends ContentDefinition implements IEntry, IModifiable, IHtmlString
+    class Content extends ContentDefinition implements IdentifiableByInteger, IModifiable, IHtmlString
     {
-        use BaseEntry;
+        use IdentifiedByInteger;
         use ModifiableContent;
 
 

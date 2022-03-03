@@ -3,27 +3,27 @@
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\IEntry;
-    use Ataccama\Common\Utils\Cache\EntryKey;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
+    use Ataccama\Common\Utils\Cache\IntegerKey;
 
 
     /**
      * Class ContentKey
      * @package Ataccama\ContentManager\Env
      */
-    class ContentKey extends EntryKey
+    class ContentKey extends IntegerKey
     {
         private int $languageId;
 
         /**
          * ContentKey constructor.
-         * @param IEntry $entry
-         * @param IEntry $language
+         * @param IdentifiableByInteger $content
+         * @param int                   $languageId
          */
-        public function __construct(IEntry $entry, IEntry $language)
+        public function __construct(IdentifiableByInteger $content, int $languageId)
         {
-            parent::__construct($entry);
-            $this->languageId = $language->id;
+            parent::__construct($content);
+            $this->languageId = $languageId;
         }
 
         public function getPrefix(): ?string

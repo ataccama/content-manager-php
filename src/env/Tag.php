@@ -3,10 +3,9 @@
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\BaseEntry;
-    use Ataccama\Common\Env\IEntry;
+    use Ataccama\Common\Env\IdentifiedByInteger;
     use Ataccama\Common\Env\IPair;
-    use Ataccama\Common\Env\Pair;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
 
 
     /**
@@ -14,9 +13,10 @@
      * @package Ataccama\ContentManager\Env
      * @property-read int $id
      */
-    class Tag extends TagDefinition implements IEntry, IPair
+    class Tag extends TagDefinition implements IdentifiableByInteger, IPair
     {
-        use BaseEntry;
+        use IdentifiedByInteger;
+
 
         /**
          * Tag constructor.
@@ -29,22 +29,13 @@
             $this->id = $id;
         }
 
-        public function getKey()
+        public function getKey(): int|string
         {
             return $this->id;
         }
 
-        public function getValue()
+        public function getValue(): string
         {
             return $this->name;
-        }
-
-        /**
-         * @return Pair
-         * @deprecated
-         */
-        public function toPair(): Pair
-        {
-            return new $this;
         }
     }

@@ -3,14 +3,15 @@
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Utils\Cache\EntryKey;
+
+    use Ataccama\Common\Utils\Cache\StringKey;
 
 
     /**
      * Class ContentContainerKey
      * @package Ataccama\ContentManager\Env
      */
-    class ContentContainerKey extends EntryKey
+    class ContentContainerKey extends StringKey
     {
         public function getPrefix(): ?string
         {
