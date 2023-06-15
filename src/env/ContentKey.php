@@ -12,17 +12,17 @@
      */
     class ContentKey implements IKey
     {
-        private string $id;
+        private int $id;
         private int $languageId;
 
         /**
          * ContentKey constructor.
-         * @param string $id
-         * @param int    $languageId
+         * @param int $contentId
+         * @param int $languageId
          */
-        public function __construct(string $id, int $languageId)
+        public function __construct(int $contentId, int $languageId)
         {
-            $this->id = $id;
+            $this->id = $contentId;
             $this->languageId = $languageId;
         }
 
@@ -33,6 +33,6 @@
 
         public function getId(): string
         {
-            return $this->id;
+            return (string) $this->id;
         }
     }
