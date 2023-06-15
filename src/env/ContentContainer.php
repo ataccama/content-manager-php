@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -13,6 +14,7 @@
     class ContentContainer extends BaseArray implements IModifiable
     {
         use ModifiableContent;
+
 
         /**
          * @return Content
@@ -36,7 +38,7 @@
          * @return Content
          * @throws ContentNotFound
          */
-        public function __get(string $name)
+        public function __get(string $name): Content
         {
             if (isset($this->items[$name])) {
                 return $this->modify($this->items[$name]);
@@ -61,16 +63,18 @@
         /**
          * @param Content $content
          */
-        public function add($content)
+        public function add($content): self
         {
             $this->items[$content->name] = $content;
+
+            return $this;
         }
 
         /**
          * @param $name
          * @return bool
          */
-        public function __isset($name)
+        public function __isset($name): bool
         {
             return isset($this->items[$name]);
         }

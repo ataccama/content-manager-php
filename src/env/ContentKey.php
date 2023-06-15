@@ -1,33 +1,38 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\IEntry;
-    use Ataccama\Common\Utils\Cache\EntryKey;
+    use Ataccama\Common\Utils\Cache\IKey;
 
 
     /**
      * Class ContentKey
      * @package Ataccama\ContentManager\Env
      */
-    class ContentKey extends EntryKey
+    class ContentKey implements IKey
     {
-        /** @var int */
-        private $languageId;
+        private string $id;
+        private int $languageId;
 
         /**
          * ContentKey constructor.
-         * @param IEntry $entry
-         * @param IEntry $language
+         * @param string $id
+         * @param int    $languageId
          */
-        public function __construct(IEntry $entry, IEntry $language)
+        public function __construct(string $id, int $languageId)
         {
-            parent::__construct($entry);
-            $this->languageId = $language->id;
+            $this->id = $id;
+            $this->languageId = $languageId;
         }
 
         public function getPrefix(): ?string
         {
             return $this->languageId . "_content";
+        }
+
+        public function getId(): string
+        {
+            return $this->id;
         }
     }

@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Modifiers;
 
@@ -13,10 +14,10 @@
     class Marker implements IModifier
     {
         /** @var string */
-        private $term;
+        private string $term;
 
         /** @var string */
-        private $classes;
+        private string $classes;
 
         /**
          * Marker constructor.

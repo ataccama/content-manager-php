@@ -1,11 +1,11 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\BaseEntry;
-    use Ataccama\Common\Env\IEntry;
     use Ataccama\Common\Env\IPair;
-    use Ataccama\Common\Env\Pair;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
+    use Nette\SmartObject;
 
 
     /**
@@ -13,9 +13,12 @@
      * @package Ataccama\ContentManager\Env
      * @property-read int $id
      */
-    class Tag extends TagDefinition implements IEntry, IPair
+    class Tag extends TagDefinition implements IdentifiableByInteger, IPair
     {
-        use BaseEntry;
+        use SmartObject;
+
+
+        protected int $id;
 
         /**
          * Tag constructor.
@@ -28,22 +31,18 @@
             $this->id = $id;
         }
 
-        public function getKey()
+        public function getKey(): int
         {
             return $this->id;
         }
 
-        public function getValue()
+        public function getValue(): string
         {
             return $this->name;
         }
 
-        /**
-         * @return Pair
-         * @deprecated
-         */
-        public function toPair(): Pair
+        public function getId(): int
         {
-            return new $this;
+            return $this->id;
         }
     }

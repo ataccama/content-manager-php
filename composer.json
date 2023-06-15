@@ -1,15 +1,15 @@
 {
   "name": "ataccama/content-manager-php",
   "description": "Classes for content management",
-  "version": "3.0.8",
+  "version": "5.0.0",
   "type": "library",
   "license": [
     "MIT"
   ],
   "require": {
-    "php": ">= 7.2.0",
+    "php": ">= 8.2.0",
     "nette/utils": ">= 3.0",
-    "ataccama/utils-php": "^2.0",
+    "ataccama/utils-php": "^5.0",
     "latte/latte": "^2.5"
   },
   "require-dev": {
@@ -26,7 +26,7 @@
   "minimum-stability": "stable",
   "config": {
     "platform": {
-      "php": "7.2"
+      "php": "8.2"
     }
   }
 }

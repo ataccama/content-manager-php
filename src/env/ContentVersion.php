@@ -1,9 +1,10 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\BaseEntry;
-    use Ataccama\Common\Env\IEntry;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
+    use Nette\SmartObject;
     use Nette\Utils\DateTime;
 
 
@@ -15,19 +16,15 @@
      * @property-read string      $content
      * @property-read string|null $author
      */
-    class ContentVersion implements IEntry
+    class ContentVersion implements IdentifiableByInteger
     {
-        use BaseEntry;
+        use SmartObject;
 
 
-        /** @var string */
-        protected $content;
-
-        /** @var DateTime */
-        protected $dtCreated;
-
-        /** @var string|null */
-        protected $author;
+        protected int $id;
+        protected string $content;
+        protected DateTime $dtCreated;
+        protected ?string $author;
 
         /**
          * ContentVersion constructor.
@@ -66,5 +63,10 @@
         public function getAuthor(): ?string
         {
             return $this->author;
+        }
+
+        public function getId(): int
+        {
+            return $this->id;
         }
     }

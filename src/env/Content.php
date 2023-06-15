@@ -1,10 +1,11 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\BaseEntry;
-    use Ataccama\Common\Env\IEntry;
-    use Latte\Runtime\IHtmlString;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
+    use Latte\Runtime\HtmlStringable;
+    use Nette\SmartObject;
     use Nette\Utils\DateTime;
 
 
@@ -13,21 +14,20 @@
      * @package Ataccama\ContentManager\Env
      * @property-read DateTime         $dtCreated
      * @property-read ContentVersion[] $versions
+     * @property-read int              $id
      */
-    class Content extends ContentDefinition implements IEntry, IModifiable, IHtmlString
+    class Content extends ContentDefinition implements IdentifiableByInteger, IModifiable, HtmlStringable
     {
-        use BaseEntry;
+        use SmartObject;
         use ModifiableContent;
 
 
-        /** @var DateTime */
-        protected $dtCreated;
+        protected int $id;
+        protected DateTime $dtCreated;
 
         /** @var ContentVersion[] */
-        protected $versions = [];
-
-        /** @var string */
-        private $modifiedBody;
+        protected array $versions = [];
+        private ?string $modifiedBody = null;
 
         /**
          * Content constructor.
@@ -38,22 +38,24 @@
          * @param Tag[]            $tags
          * @param DateTime|null    $dtCreated
          * @param ContentVersion[] $versions
+         * @throws \Exception
          */
         public function __construct(
             int $id,
             string $name,
             Language $languageId,
-            string $body = null,
+            ?string $body = null,
             array $tags = [],
-            DateTime $dtCreated = null,
+            ?DateTime $dtCreated = null,
             array $versions = []
         ) {
             parent::__construct($name, $languageId, $body, $tags);
             $this->id = $id;
-            $this->dtCreated = $dtCreated;
 
-            if (!isset($this->dtCreated)) {
+            if (empty($this->dtCreated)) {
                 $this->dtCreated = DateTime::from('now');
+            } else {
+                $this->dtCreated = $dtCreated;
             }
 
             if (isset($versions) && is_array($versions)) {
@@ -90,11 +92,16 @@
 
             $this->modifiedBody = $modifiedBody;
 
-            return $modifiedBody;
+            return $modifiedBody ?? "";
         }
 
         public function cleanVersions(): void
         {
             $this->versions = [];
+        }
+
+        public function getId(): int
+        {
+            return $this->id;
         }
     }

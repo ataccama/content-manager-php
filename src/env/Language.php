@@ -1,11 +1,12 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\BaseEntry;
-    use Ataccama\Common\Env\IEntry;
     use Ataccama\Common\Env\IPair;
     use Ataccama\Common\Env\Pair;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
+    use Nette\SmartObject;
 
 
     /**
@@ -17,34 +18,30 @@
      * @property-read string|null $nativeName
      * @property-read bool        $active
      */
-    class Language implements IEntry, IPair
+    class Language implements IdentifiableByInteger, IPair
     {
-        use BaseEntry;
+        use SmartObject;
 
 
-        /** @var int */
-        private static $defaultLanguageId = 1;
-
-        /** @var string */
-        private static $defaultIsoCode = "en";
-
-        /** @var Language */
-        private static $current;
+        protected int $id;
+        private static int $defaultLanguageId = 1;
+        private static string $defaultIsoCode = "en";
+        private static Language $current;
 
         /**
          * @var string
          * ISO 639-1 Code
          */
-        protected $isoCode;
+        protected string $isoCode;
 
         /** @var string|null */
-        protected $name = null;
+        protected ?string $name = null;
 
         /** @var string|null */
-        protected $nativeName = null;
+        protected ?string $nativeName = null;
 
         /** @var bool */
-        protected $active = true;
+        protected bool $active = true;
 
         /**
          * Language constructor.
@@ -127,12 +124,12 @@
             return new Pair($this->id, $this->isoCode);
         }
 
-        public function getKey()
+        public function getKey(): int
         {
             return $this->id;
         }
 
-        public function getValue()
+        public function getValue(): string
         {
             return $this->isoCode;
         }
@@ -159,5 +156,10 @@
         public function isActive(): bool
         {
             return $this->active;
+        }
+
+        public function getId(): int
+        {
+            return $this->id;
         }
     }

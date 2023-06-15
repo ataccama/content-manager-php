@@ -1,8 +1,9 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
-    use Ataccama\Common\Env\IEntry;
+    use Ataccama\Common\Interfaces\IdentifiableByInteger;
     use Nette\Utils\Validators;
 
 
@@ -20,22 +21,21 @@
         const CONTENT_ID = "content_id";
 
         /** @var string[] */
-        public $aliases = [];
+        public array $aliases = [];
 
         /** @var string[] */
-        public $tags = [];
+        public array $tags = [];
 
         /** @var Language|null */
-        public $language;
+        public ?Language $language;
 
         /** @var string|null */
-        public $term;
+        public ?string $term;
 
-        /** @var IEntry|null */
-        public $page;
+        public ?IdentifiableByInteger $page;
 
         /** @var int|null */
-        public $contentId;
+        public ?int $contentId;
 
         /**
          * ContentFilter constructor.
@@ -49,7 +49,7 @@
                 }
             }
             if (isset($params[self::PAGE])) {
-                if ($params[self::PAGE] instanceof IEntry) {
+                if ($params[self::PAGE] instanceof IdentifiableByInteger) {
                     $this->page = $params[self::PAGE];
                 }
             }

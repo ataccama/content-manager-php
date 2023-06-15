@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace Ataccama\ContentManager\Env;
 
@@ -13,12 +14,8 @@
     trait ModifiableContent
     {
         /** @var IModifier[] */
-        private $modifiers = [];
-
-        /**
-         * @var array
-         */
-        private $modifications = [];
+        private array $modifiers = [];
+        private array $modifications = [];
 
         public function addModifier(IModifier $modifier): void
         {
@@ -36,7 +33,7 @@
         protected function modify(Content $content): Content
         {
             foreach ($this->modifiers as $modifier) {
-                if (!$this->isApplicated($content, $modifier)) {
+                if (!$this->isApplied($content, $modifier)) {
                     $content = $modifier->modify($content);
                     $this->modifications[$content->id][get_class($modifier)] = true;
                 }
@@ -50,7 +47,7 @@
          * @param IModifier $modifier
          * @return bool
          */
-        protected function isApplicated(Content $content, IModifier $modifier): bool
+        protected function isApplied(Content $content, IModifier $modifier): bool
         {
             return isset($this->modifications[$content->id][get_class($modifier)]);
         }
